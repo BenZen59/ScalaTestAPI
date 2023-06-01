@@ -14,13 +14,12 @@ lazy val root = (project in file("."))
       "com.typesafe.akka" %% "akka-actor-typed" % akkaVersion,
       "com.typesafe.akka" %% "akka-stream" % akkaVersion,
       "ch.qos.logback" % "logback-classic" % "1.4.6",
-
       "com.typesafe.akka" %% "akka-http-testkit" % akkaHttpVersion % Test,
       "com.typesafe.akka" %% "akka-actor-testkit-typed" % akkaVersion % Test,
       "org.scalatest" %% "scalatest" % "3.2.15" % Test,
-      "com.typesafe.play" %% "play-json" % "2.9.4"
-
+      "com.typesafe.play" %% "play-json" % "2.9.4",
     )
-  )
+
+)
 
 // See https://www.scala-sbt.org/1.x/docs/Using-Sonatype.html for instructions on how to publish to Sonatype.
