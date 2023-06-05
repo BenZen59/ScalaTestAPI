@@ -17,65 +17,7 @@ object APICaller {
     implicit val system = ActorSystem("position-stack-example")
     implicit val materializer = ActorMaterializer()
     implicit val executionContext = system.dispatcher
-
-    // Générer une liste de 5 kilomètres de trajets aléatoires
-    val random = new Random()
-    val trajets = List.fill(5)(random.nextDouble() * 5) // Génère une liste de 5 nombres aléatoires entre 0 et 5
-
-    // Trouver la plus petite valeur dans la liste des trajets
-    val plusPetitTrajet = trajets.min
-
-    // Afficher la plus petite valeur
-    println(s"Le plus petit trajet est de : $plusPetitTrajet kilomètres")
-
-    // Définir une liste de villes
-    val villes = List("Paris", "Londres", "New York", "Tokyo", "Sydney", "Berlin", "Rome", "Barcelone")
-
-    // Générer une liste de 5 villes aléatoires
-    val randomVille = new Random()
-    val villesAleatoires = List.fill(5)(villes(random.nextInt(villes.length)))
-
-    // Afficher les villes aléatoires
-    println("Liste des villes qui serviront de stop :")
-    villesAleatoires.foreach(println)
-
-    case class VilleStop(ville: String, stop: String)
-
-    // Créer un tableau d'objets avec 5 villes et attribuer "oui" à deux objets pour le champ "stop"
-    val tableauObjets = Array(
-      VilleStop("Paris", "non"),
-      VilleStop("Londres", "non"),
-      VilleStop("New York", "oui"),
-      VilleStop("Tokyo", "non"),
-      VilleStop("Sydney", "oui")
-    )
-
-    // Filtrer les objets qui ont "oui" dans le champ "stop"
-    val objetsAvecStopOui = tableauObjets.filter(_.stop == "oui")
-
-    // Afficher les objets avec "oui" dans le champ "stop"
-    println("Objets avec stop = oui :")
-    objetsAvecStopOui.foreach(println)
-
-    // Afficher tous les objets du tableau
-    println("Tous les objets :")
-    tableauObjets.foreach(println)
-
-    case class Trajet(villeDepart: String, villeArrivee: String, distance: Double)
-
-    // Créer un tableau d'objets avec 3 trajets
-    val tableauObjetsTrajets = Array(
-      Trajet("Paris", "Londres", 500.0),
-      Trajet("New York", "San Francisco", 4000.0),
-      Trajet("Tokyo", "Sydney", 6000.0)
-    )
-
-    // Trouver l'objet avec la distance la plus courte
-    val trajetDistanceMin = tableauObjetsTrajets.minBy(_.distance)
-
-    // Afficher l'objet avec la distance la plus courte
-    println(s"Trajet avec la distance la plus courte : ${trajetDistanceMin.villeDepart} - ${trajetDistanceMin.villeArrivee}, Distance : ${trajetDistanceMin.distance} km")
-
+    
     // Définir votre clé d'API PositionStack
     val apiKey = "c071e4936018043b17d463c556194f93"
     // Effectuer une requête pour obtenir la géolocalisation d'une adresse
@@ -209,4 +151,62 @@ object APICaller {
     distanceInKilometers
 
   }
+
+   // Générer une liste de 5 kilomètres de trajets aléatoires
+    val random = new Random()
+    val trajets = List.fill(5)(random.nextDouble() * 5) // Génère une liste de 5 nombres aléatoires entre 0 et 5
+
+    // Trouver la plus petite valeur dans la liste des trajets
+    val plusPetitTrajet = trajets.min
+
+    // Afficher la plus petite valeur
+    println(s"Le plus petit trajet est de : $plusPetitTrajet kilomètres")
+
+    // Définir une liste de villes
+    val villes = List("Paris", "Londres", "New York", "Tokyo", "Sydney", "Berlin", "Rome", "Barcelone")
+
+    // Générer une liste de 5 villes aléatoires
+    val randomVille = new Random()
+    val villesAleatoires = List.fill(5)(villes(random.nextInt(villes.length)))
+
+    // Afficher les villes aléatoires
+    println("Liste des villes qui serviront de stop :")
+    villesAleatoires.foreach(println)
+
+    case class VilleStop(ville: String, stop: String)
+
+    // Créer un tableau d'objets avec 5 villes et attribuer "oui" à deux objets pour le champ "stop"
+    val tableauObjets = Array(
+      VilleStop("Paris", "non"),
+      VilleStop("Londres", "non"),
+      VilleStop("New York", "oui"),
+      VilleStop("Tokyo", "non"),
+      VilleStop("Sydney", "oui")
+    )
+
+    // Filtrer les objets qui ont "oui" dans le champ "stop"
+    val objetsAvecStopOui = tableauObjets.filter(_.stop == "oui")
+
+    // Afficher les objets avec "oui" dans le champ "stop"
+    println("Objets avec stop = oui :")
+    objetsAvecStopOui.foreach(println)
+
+    // Afficher tous les objets du tableau
+    println("Tous les objets :")
+    tableauObjets.foreach(println)
+
+    case class Trajet(villeDepart: String, villeArrivee: String, distance: Double)
+
+    // Créer un tableau d'objets avec 3 trajets
+    val tableauObjetsTrajets = Array(
+      Trajet("Paris", "Londres", 500.0),
+      Trajet("New York", "San Francisco", 4000.0),
+      Trajet("Tokyo", "Sydney", 6000.0)
+    )
+
+    // Trouver l'objet avec la distance la plus courte
+    val trajetDistanceMin = tableauObjetsTrajets.minBy(_.distance)
+
+    // Afficher l'objet avec la distance la plus courte
+    println(s"Trajet avec la distance la plus courte : ${trajetDistanceMin.villeDepart} - ${trajetDistanceMin.villeArrivee}, Distance : ${trajetDistanceMin.distance} km")
 }
